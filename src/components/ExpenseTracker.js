@@ -40,6 +40,11 @@ const ExpenseTracker = () => {
         // calculateExpenses();
     }
 
+    const handleDeleteTransaction = id => {
+        const filteredTransactions = transactions.filter((item) => item.id !== id)
+        setTransactions(filteredTransactions)
+    }
+
     useEffect(() => {
         calculateExpenses();
     }, [transactions]);
@@ -48,7 +53,10 @@ const ExpenseTracker = () => {
         <div>
             <h1>Expense Tracker</h1>
             <Expense income={income} expense={expense} />
-            <TransactionHistory transactions={transactions} />
+            <TransactionHistory
+                transactions={transactions}
+                onDeleteTransaction={handleDeleteTransaction}
+            />
             <TransactionForm onNewTransaction={handleAddNewTransaction} />
         </div>
     );
