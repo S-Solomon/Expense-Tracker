@@ -34,7 +34,7 @@ const TransactionForm = ({onNewTransaction}) => {
                 </label>
                 <div>
                     <button className="income-btn" onClick={(e) => addTransaction('income', e)}>Add Income</button>
-                    <button className="income-btn" onClick={(e) => addTransaction('expense', e)}>Add Expense</button>
+                    <button className="expense-btn" onClick={(e) => addTransaction('expense', e)}>Add Expense</button>
                 </div>
             </form>
         </div>
