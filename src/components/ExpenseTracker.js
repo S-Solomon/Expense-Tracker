@@ -42,7 +42,7 @@ const ExpenseTracker = () => {
 
     const handleDeleteTransaction = id => {
         const filteredTransactions = transactions.filter((item) => item.id !== id)
-        setTransactions(filteredTransactions)
+        setTransactions(filteredTransactions);
     }
 
     useEffect(() => {
