@@ -9,15 +9,15 @@ import { useState, useEffect } from 'react'
 
 
 const transactionData = [
-    { id: nanoid(),  name: 'salary', amount:3000 , type: 'income' },
-    { id: nanoid(),  name: 'Grocery', amount:100 , type: 'Expense' },
+    // { id: nanoid(),  name: 'salary', amount:3000 , type: 'income' },
+    // { id: nanoid(),  name: 'Grocery', amount:100 , type: 'Expense' },
 ];
 
 const ExpenseTracker = () => {
 
     const [income, setIncome] = useState(0)
     const [expense, setExpense] = useState(0)
-    const [transactions, setTransactions] = useState(transactionData);
+    const [transactions, setTransactions] = useState([]);
 
     const calculateExpenses = () => {
         let income = 0, expense = 0;
@@ -30,20 +30,26 @@ const ExpenseTracker = () => {
             }
         })
         // whenever we change the state of a value in react, the rerender of the component happens
-        // setIncome(income);
-        // setExpense(expense);
+        setIncome(income);
+        setExpense(expense);
+    }
+
+    const handleAddNewTransaction = item => {
+        let newTransactions = [...transactions, item]
+        setTransactions(newTransactions);
+        // calculateExpenses();
     }
 
     useEffect(() => {
         calculateExpenses();
-    }, []);
+    }, [transactions]);
 
     return (
         <div>
             <h1>Expense Tracker</h1>
             <Expense income={income} expense={expense} />
             <TransactionHistory transactions={transactions} />
-            <TransactionForm />
+            <TransactionForm onNewTransaction={handleAddNewTransaction} />
         </div>
     );
 }
