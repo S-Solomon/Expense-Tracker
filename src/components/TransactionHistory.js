@@ -1,11 +1,16 @@
 
-const TransactionHistory = () => {
+const TransactionHistory = ({ transactions }) => {
     return (
         <div>
             <h2>Transaction History</h2>
             <ul>
-                <li>Salary - £3000</li>
-                <li>Grocery - £100</li>
+            {
+                transactions.map((data) => (
+                    <li key={data.id}>{data.name} - £{data.amount}
+                        <button>x</button>
+                    </li>
+                ))
+            }  
             </ul>
         </div>
     )
