@@ -19,6 +19,10 @@ const ExpenseTracker = () => {
     const [expense, setExpense] = useState(0)
     const [transactions, setTransactions] = useState([]);
 
+    const saveState = () => {
+        localStorage.setItem('expenseTrackerState', JSON.stringify(transactions));
+    }
+
     const calculateExpenses = () => {
         let income = 0, expense = 0;
 
@@ -29,6 +33,9 @@ const ExpenseTracker = () => {
                 expense += data.amount
             }
         })
+
+        saveState();
+
         // whenever we change the state of a value in react, the rerender of the component happens
         setIncome(income);
         setExpense(expense);
@@ -44,6 +51,15 @@ const ExpenseTracker = () => {
         const filteredTransactions = transactions.filter((item) => item.id !== id)
         setTransactions(filteredTransactions);
     }
+
+    useEffect(() => {
+        let localState = JSON.parse(localStorage.getItem("expenseTrackerState"));
+        if(localState) {
+            setTransactions(localState)
+        }else {
+            calculateExpenses();
+        }
+    },[])
 
     useEffect(() => {
         calculateExpenses();
