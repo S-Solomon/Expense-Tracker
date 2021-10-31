@@ -23,13 +23,13 @@ const TransactionForm = ({onNewTransaction}) => {
                 <label htmlFor="Name">
                     Name
                     <div>
-                        <input type="text" value={nameValue} onChange={(e) => setNameValue(e.target.value)}/>
+                        <input type="text" value={nameValue} onChange={(e) => setNameValue(e.target.value)} placeholder="e.g. Buy dog food"/>
                     </div>
                 </label>
                 <label htmlFor="Amount">
                     Amount
                     <div>
-                        <input type="number" value={amountValue} onChange={(e) => setAmountValue(e.target.value)}/>
+                        <input type="number" value={amountValue} onChange={(e) => setAmountValue(e.target.value)} placeholder="e.g. 150"/>
                     </div>
                 </label>
                 <div>
