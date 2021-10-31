@@ -1,3 +1,5 @@
+import { CgTrash } from 'react-icons/cg'
+
 
 const TransactionHistory = ({ transactions, onDeleteTransaction }) => {
     return (
@@ -7,8 +9,11 @@ const TransactionHistory = ({ transactions, onDeleteTransaction }) => {
                 {transactions.map((data) => (
                     <li key={data.id}>
                         {data.name} - £{data.amount}
-                        <button onClick={() => onDeleteTransaction(data.id)}>
-                            x
+                        <button
+                            onClick={() => onDeleteTransaction(data.id)}
+                            className="trash-can"
+                        >
+                            <CgTrash />
                         </button>
                     </li>
                 ))}
