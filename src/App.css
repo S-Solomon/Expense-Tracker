@@ -121,3 +121,13 @@ body {
     background-color: var(--expense);
     cursor: pointer;
 }
+
+.trash-can {
+    outline: none;
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+    /* margin: 0 auto; */
+    font-size: 1.2rem;
+}
